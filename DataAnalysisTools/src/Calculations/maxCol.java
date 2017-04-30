@@ -5,7 +5,7 @@ import java.io.File;
 public class maxCol implements Calculations {
 
 	@Override
-	public void doCalc(String table, String path, String un, String pass, String calc, int col){
+	public void doCalc(String db, String table,  String un, String pass, String calc, int col){
 		
 	}
 	
