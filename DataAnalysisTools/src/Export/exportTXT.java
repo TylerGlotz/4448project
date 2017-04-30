@@ -4,11 +4,13 @@ import java.io.File;
 
 public class exportTXT implements ExportFileStream {
 
-	public void exportFile(File f){
+	@Override
+	public void exportFile(File f, String table, String path, String un, String pass){
 		
 	}
 	
-	public void export(File f, String delimeter){
+	@Override	
+	public void export(File f, String table, String path, String un, String pass, String delimeter){
 		
 	}
 	

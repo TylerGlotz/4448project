@@ -4,6 +4,6 @@ import java.io.File;
 
 public interface Calculations {
 	
-	public void doCalc(File f, String calc);
-	public void printCalc(File f, String delimeter);
+	public void doCalc(String table, String path, String un, String pass, String calc, int col);
+	public void printCalc(String answer);
 }

@@ -7,10 +7,19 @@ import Import.ImportFileStream;
 import Calculations.Calculations;
 
 
-	public class driver {
-	
-	public driver(String db){
+public class driver {
 		
+		private String t;
+		private String p;
+		private String u;
+		private String psw;
+		
+	public driver(String table, String path, String un, String pass){
+		
+		table=t;
+		path=p;
+		un=u;
+		pass=psw;
 	}
 	
 	public void startDriver(){
@@ -29,7 +38,7 @@ import Calculations.Calculations;
 		
 	}
 	
-	public void directCalc(String calcType){
+	public void directCalc(String calcType, int col){
 		
 	}
 	

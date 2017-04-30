@@ -2,13 +2,15 @@ package Calculations;
 
 import java.io.File;
 
-public class maxCol {
+public class maxCol implements Calculations {
 
-	public void doCalc(File f, String calc){
+	@Override
+	public void doCalc(String table, String path, String un, String pass, String calc, int col){
 		
 	}
 	
-	public void printCalc(File f, String delimeter){
+	@Override
+	public void printCalc(String answer){
 		
 	}
 	
