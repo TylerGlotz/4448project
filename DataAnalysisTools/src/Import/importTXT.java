@@ -2,12 +2,15 @@ package Import;
 
 public class importTXT implements ImportFileStream {
 	
-	public <File> void importFile(File f){
-	
+	public <File> void importFile(File F){
+		
+		
 	}
 	
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+	public <File> void importFile(File F, String delimeter){
+		
+		
+	}	
+	
 
-	}
 }
