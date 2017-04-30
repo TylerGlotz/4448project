@@ -30,11 +30,11 @@ public class driver {
 		
 	}
 	
-	public void catchImport(File data){
+	public void catchImport(String path){
 		
 	}
 	
-	public void directExport(String filetype){
+	public void directExport(String filetype, String path, String delimeter){
 		
 	}
 	
