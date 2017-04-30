@@ -1,6 +1,10 @@
 package Import;
 
+import Driver.driver;
+
+import java.io.File;
+
 public interface ImportFileStream {
-	public <File> void importFile(File f);
-	public <File> void importFile(File f, String delimeter);
+	public void importFile(File f);
+	public void importFile(File f, String delimeter);
 }

@@ -1,16 +1,17 @@
 package Import;
 
+import java.io.File;
+
 public class importTXT implements ImportFileStream {
 	
-	public <File> void importFile(File F){
+	public void importFile(File F){
 		
 		
 	}
 	
-	public <File> void importFile(File F, String delimeter){
+	public void importFile(File F, String delimeter){
 		
 		
 	}	
 	
-
 }
