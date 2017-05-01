@@ -26,7 +26,14 @@ public class driver {
 	}
 	
 	//Starts Database
-	public void startDriver(){
+	public void startDriver(driver d){
+		
+		
+		
+	}
+	
+	public void createDatabase(driver d){
+		//create database
 		
 	}
 	
@@ -55,8 +62,8 @@ public class driver {
 	
 	public static void main(String[] args) {
 
-		//driver d=new driver();
 		
+		//driver d=new driver();
 		//directImport(d.path);
 		
 	}
