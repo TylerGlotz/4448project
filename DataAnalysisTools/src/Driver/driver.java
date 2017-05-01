@@ -1,6 +1,7 @@
 package Driver;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.*;
 
 import Export.*;
@@ -33,7 +34,7 @@ public class driver {
 	
 	//Calls correct import to path
 	//If data type has no Delimeter or it is trivial enter "0"
-	public static void directImport(String db, String table, String path, String un, String pass, String delimeter){
+	public static void directImport(String db, String table, String path, String un, String pass, String delimeter) throws IOException{
 		
 		//this block puts the file extension into a string
 		String extension = "";
@@ -59,7 +60,7 @@ public class driver {
 	
 	//Calls correct export to path
 	//If data type has no Delimeter or it is trivial enter "0"
-	public static void directExport(String db, String table, String path, String un, String pass, String delimeter){
+	public static void directExport(String db, String table, String path, String un, String pass, String delimeter) throws IOException{
 		
 		//this block puts the file extension into a string
 		//System.out.println("in directExport"+ db);
@@ -87,7 +88,7 @@ public class driver {
 	}
 	
 	//Calls correct calculation
-	public static void directCalc(String db, String table, String un, String pass, String calc, String col){
+	public static void directCalc(String db, String table, String un, String pass, String calc, String col) throws IOException{
 		
 		//calls appropriate column calculation
 		if(calc.equals("minCol")){
@@ -109,7 +110,7 @@ public class driver {
 	}
 	
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException{
 		
 		//get database running
 		/*
