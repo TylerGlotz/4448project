@@ -1,6 +1,4 @@
-package Export;
-
-import java.io.File;
+package Export;import java.io.File;
 
 public interface ExportFileStream {
 	

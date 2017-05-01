@@ -20,11 +20,16 @@ public class exportCSV implements ExportFileStream {
 			
 			//connect to database with db (database name), un (MySQL user name), pass (MySQL password)
 			Connection connect = DriverManager.getConnection(String.format("jdbc:mysql://localhost:3306/%s?useSSL=false", db), un, pass);
+			
+			//Get the whole table
 			String query = String.format("SELECT * FROM %s", table);
 			Statement statem = connect.createStatement();
+			
+			//Result Set
 			ResultSet res = statem.executeQuery(query);
 			ResultSetMetaData rsmd = res.getMetaData();
 			int numcol = rsmd.getColumnCount();
+			
 			//loops through result set, while there is still columns use ',' as delimeter.
 			//when out of columns use a newline
 			while(res.next()){
@@ -35,9 +40,13 @@ public class exportCSV implements ExportFileStream {
 				}
 				filew.append('\n');
 			}
+			
+			//Clean up
 			filew.flush();
 			filew.close();
 			connect.close();
+			
+			//Let us know what happened
 			System.out.println("CSV File is created successfully.");
 			
 		}catch(Exception e){

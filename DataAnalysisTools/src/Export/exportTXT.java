@@ -18,14 +18,20 @@ public class exportTXT implements ExportFileStream {
 				
 				//connect to database with db (database name), un (MySQL user name), pass (MySQL password)
 				Connection connect = DriverManager.getConnection(String.format("jdbc:mysql://localhost:3306/%s?useSSL=false", db), un, pass);
+				
+				//SQL query
 				String query = String.format("SELECT * FROM %s", table);
 				Statement statem = connect.createStatement();
+				
+				//result of query
 				ResultSet res = statem.executeQuery(query);
 				ResultSetMetaData rsmd = res.getMetaData();
 				int numcol = rsmd.getColumnCount();
 				//loops through result set, while there is still columns use ',' as delimeter.
 				//when out of columns use a newline
-				System.out.println(numcol);
+			
+				
+				//write to file and format as specified by delimeter
 				while(res.next()){
 					for(int i=1; i < numcol; i++){
 						filew.append(res.getString(i));
@@ -35,9 +41,13 @@ public class exportTXT implements ExportFileStream {
 					}
 					filew.append('\n');
 				}
+				
+				//Clean up
 				filew.flush();
 				filew.close();
 				connect.close();
+				
+				
 				System.out.println("TXT File is created successfully.");
 				
 			}catch(Exception e){
