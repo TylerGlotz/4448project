@@ -43,13 +43,13 @@ public class driver {
 		}
 		
 		//if it is a text file
-		if(extension=="txt" || extension=="t"){
+		if(extension.equals("txt")){
 			Import.importTXT port=new importTXT();
 			port.importFile(db, table, path, un, pass, delimeter);
 		}
 		
 		//if it is a CSV file
-			if(extension=="csv" || extension=="c"){
+			if(extension.equals("csv")){
 				Import.importCSV port=new importCSV();
 				port.importFile(db, table, path, un, pass, delimeter);
 			}		
@@ -62,42 +62,47 @@ public class driver {
 	public static void directExport(String db, String table, String path, String un, String pass, String delimeter){
 		
 		//this block puts the file extension into a string
+		//System.out.println("in directExport"+ db);
+		
 		String extension = "";
 		int i = path.lastIndexOf('.');
 		if (i > 0) {
 		    extension = path.substring(i+1);
 		}
+		//System.out.println(extension);
+
 		
 		//if it is a txt file call exportTXT
-		if(extension=="txt" || extension=="t"){
+		if(extension.equals("txt")){
 			Export.exportTXT port=new exportTXT();
 			port.export(db, table, path, un, pass, delimeter);
 		}
 		
 		//if it is a CSV file call exportCSV
-			if(extension=="csv" || extension=="c"){
-				Export.exportCSV port=new exportCSV();
-				port.export(db, table, path, un, pass, delimeter);
-			}
+		if(extension.equals("csv")){
+			//System.out.println("it is a csv");
+			Export.exportCSV port=new exportCSV();
+			port.export(db, table, path, un, pass, delimeter);
+		}
 	}
 	
 	//Calls correct calculation
-	public static void directCalc(String db, String table, String un, String pass, String calc, int col){
+	public static void directCalc(String db, String table, String un, String pass, String calc, String col){
 		
 		//calls appropriate column calculation
-		if(calc=="minCol"){
+		if(calc.equals("minCol")){
 			minCol calcz=new minCol();
 			calcz.doCalc(db, table, un, pass, calc, col);
 		}
-		if(calc=="maxCol"){
+		if(calc.equals("maxCol")){
 			maxCol calcz=new maxCol();
 			calcz.doCalc(db, table, un, pass, calc, col);
 		}
-		if(calc=="averageCol"){
+		if(calc.equals("averageCol")){
 			averageCol calcz=new averageCol();
 			calcz.doCalc(db, table, un, pass, calc, col);
 		}
-		if(calc=="sumCol"){
+		if(calc.equals("sumCol")){
 			sumCol calcz=new sumCol();
 			calcz.doCalc(db, table, un, pass, calc, col);
 		}
@@ -109,15 +114,21 @@ public class driver {
 		//get database running
 		/*
 		 * uncomment for test import text set delimeter and path to appropraite values
-		 * must change private database values
+		 * must change private database values*/
 		driver d=new driver(database,table,username,password);
-		startDriver(d,database,table,username,password);
 		
-		String delimeter="";
-		String path="/sample/read/path";
+		d.name=database;
+		d.t=table;
+		d.u=username;
+		d.psw=password;
+
+		String delimeter="\t";
+		String path="/sample/read/path.csv";
+		/*
 		directImport(d.name, d.t, path, d.u, d.psw, delimeter);
 		*/
-		
+		directExport(d.name, d.t, path, d.u, d.psw, delimeter);
+	
 	}
 
 }
