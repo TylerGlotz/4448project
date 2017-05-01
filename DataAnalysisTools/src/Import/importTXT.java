@@ -15,6 +15,7 @@ public class importTXT implements ImportFileStream {
 	@Override	
 	public void importFile(String db, String table, String path, String un, String pass, String delimeter){
 		  try {
+			  	
 	            Connection con = DriverManager.getConnection(String.format("jdbc:mysql://localhost:3306/%s", db), un, pass);
 	            Statement statement = con.createStatement();
 
