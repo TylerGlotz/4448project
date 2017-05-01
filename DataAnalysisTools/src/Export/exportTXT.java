@@ -17,7 +17,7 @@ public class exportTXT implements ExportFileStream {
 				Class.forName("com.mysql.jdbc.Driver").newInstance();
 				
 				//connect to database with db (database name), un (MySQL user name), pass (MySQL password)
-				Connection connect = DriverManager.getConnection(String.format("jdbc:mysql://localhost:3306/%s", db), un, pass);
+				Connection connect = DriverManager.getConnection(String.format("jdbc:mysql://localhost:3306/%s?useSSL=false", db), un, pass);
 				String query = String.format("SELECT * FROM %s", table);
 				Statement statem = connect.createStatement();
 				ResultSet res = statem.executeQuery(query);
@@ -25,10 +25,13 @@ public class exportTXT implements ExportFileStream {
 				int numcol = rsmd.getColumnCount();
 				//loops through result set, while there is still columns use ',' as delimeter.
 				//when out of columns use a newline
+				System.out.println(numcol);
 				while(res.next()){
 					for(int i=1; i < numcol; i++){
 						filew.append(res.getString(i));
 						filew.append(String.format("%s", delimeter));
+						filew.append(res.getString(i+1));
+						
 					}
 					filew.append('\n');
 				}
