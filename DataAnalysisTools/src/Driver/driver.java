@@ -17,10 +17,10 @@ public class driver {
 		private String psw;
 		private String name;
 		
-		private static String database="database";
-		private static String table="table";
-		private static String  username="username";
-		private static String password="password";
+		private static String database="dataToolsDB";
+		private static String table="asc";
+		private static String  username="root";
+		private static String password="datatools";
 		
 	//driver holds important JDBC parameters and represents a working database
 	public driver(String db, String table, String un, String pass){
@@ -123,8 +123,8 @@ public class driver {
 		d.u=username;
 		d.psw=password;
 
-		String delimeter="\t";
-		String path="/sample/read/path.csv";
+		String delimeter=",";
+		String path="/Users/yolo/GoogleDrive/College Senior Spring/CSCI 4448/4448project";
 		/*
 		directImport(d.name, d.t, path, d.u, d.psw, delimeter);
 		*/

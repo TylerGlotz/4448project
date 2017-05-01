@@ -46,7 +46,7 @@ public class importCSV implements ImportFileStream{
 		    	    }
 		    		
 		            
-		            String loadToDBQuery = String.format("LOAD DATA INFILE '%s' INTO TABLE %s FIELDS TERMINATED BY '%s' ENCLOSED BY '\"' LINES TERMINATED BY '\n';", path, table, delimeter);
+		            String loadToDBQuery = String.format("LOAD DATA INFILE '%s' INTO TABLE %s FIELDS TERMINATED BY '%s' ENCLOSED BY '\' LINES TERMINATED BY '\n';", path, table, delimeter);
 		            
 		            csvFile.close();
 		            System.out.println("Closed file");  
