@@ -20,7 +20,7 @@ public class sumCol implements Calculations {
 		try{
 		//connect to database with db (database name), un (MySQL user name), pass (MySQL password)
 		Connection connect = DriverManager.getConnection(String.format("jdbc:mysql://localhost:3306/%s?useSSL=false", db), un, pass);
-		String query = String.format("SELECT SUM(%d) FROM %s", col, table);
+		String query = String.format("SELECT SUM(%s) FROM %s", col, table);
 		Statement statem = connect.createStatement();
 		ResultSet res = statem.executeQuery(query);
 		
