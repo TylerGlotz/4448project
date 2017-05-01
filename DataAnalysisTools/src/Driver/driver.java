@@ -18,7 +18,7 @@ public class driver {
 		private String name;
 		
 		private static String database="dataToolsDB";
-		private static String table="newtable";
+		private static String table="testTable";
 		private static String username="root";
 		private static String password="datatools";
 		
