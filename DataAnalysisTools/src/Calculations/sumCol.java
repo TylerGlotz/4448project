@@ -14,24 +14,29 @@ import java.util.logging.Logger;
 import Import.importCSV;
 
 public class sumCol implements Calculations {
-
+	int sum = 0;
 	@Override
-	public void doCalc(String db, String table, String un, String pass, String calc, int col){
+	public void doCalc(String db, String table, String un, String pass, String calc, String col){
 		try{
+		
 		//connect to database with db (database name), un (MySQL user name), pass (MySQL password)
-		Connection connect = DriverManager.getConnection(String.format("jdbc:mysql://localhost:3306/%s", db), un, pass);
-		String query = String.format("SELECT SUM(%d) as col_sum FROM %s", col, table);
+		Connection connect = DriverManager.getConnection(String.format("jdbc:mysql://localhost:3306/%s?useSSL=false", db), un, pass);
+		
+		//SQL query
+		String query = String.format("SELECT SUM(%s) FROM %s", col, table);
 		Statement statem = connect.createStatement();
+		
+		//Result Set of query
 		ResultSet res = statem.executeQuery(query);
 		
-		//System.out.println(res.);
-		//result set of the query
-	//	ResultSetMetaData rsmd = res.getMetaData();
-		
-		if(res.next()){
-			int sum = res.getInt("col_sum");
+		//Get results and print
+		while(res.next()){
+			int sum = res.getInt(1);
+			System.out.println(String.format("Sum of column %s is %d", col, sum));;
+			
 		}
 		
+		//catch exceptions
 		}catch (SQLException ex) {
             Logger lgr = Logger.getLogger(sumCol.class.getName());
             lgr.log(Level.SEVERE, ex.getMessage(), ex);
@@ -39,14 +44,9 @@ public class sumCol implements Calculations {
         } 
 	}
 	
-	@Override
-	public void printCalc(String answer){
-		//System.out.Println(doCalc)
-	}
-	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
 	}
-
+	
 }
