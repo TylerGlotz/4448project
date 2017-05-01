@@ -1,6 +1,7 @@
 package Driver;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.*;
 
 import Export.*;
@@ -38,7 +39,7 @@ public class driver {
 	
 	//Calls correct import to path
 	//If data type has no Delimeter or it is trivial enter "0"
-	public static void directImport(String db, String table, String path, String un, String pass, String delimeter){
+	public static void directImport(String db, String table, String path, String un, String pass, String delimeter) throws IOException{
 		
 		
 		String db1="dataToolsDB";
@@ -66,7 +67,7 @@ public class driver {
 	}
 	
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		
 		//get database running
 		/*
@@ -78,7 +79,7 @@ public class driver {
 		startDriver(d,database,table,username,password);
 		
 		String delimeter=",";
-		String path="/Users/yolo/GoogleDrive/College Senior Spring/CSCI 4448/4448project/exampleCSV.csv";
+		String path="/Users/yolo/GoogleDrive/College Senior Spring/CSCI 4448/4448project/DataAnalysisTools/exampleCSV.csv";
 		directImport(d.name, d.t, path, d.u, d.psw, delimeter);
 		
 		

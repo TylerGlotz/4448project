@@ -1,7 +1,7 @@
 package Import;
 
 import java.io.File;
-
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -14,7 +14,7 @@ public class importTXT implements ImportFileStream {
 	
 	
 	@Override	
-	public void importFile(String db, String table, String path, String un, String pass, String delimeter){
+	public void importFile(String db, String table, String path, String un, String pass, String delimeter) throws IOException{
 			try { 
 			  
 				System.out.println("------------------------------");    
