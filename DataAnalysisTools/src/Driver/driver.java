@@ -17,10 +17,10 @@ public class driver {
 		private String psw;
 		private String name;
 		
-		private static String database="dataToolsDB";
-		private static String table="asc";
+		private static String database="salary";
+		private static String table="name_salary";
 		private static String  username="root";
-		private static String password="datatools";
+		private static String password="root";
 		
 	//driver holds important JDBC parameters and represents a working database
 	public driver(String db, String table, String un, String pass){
@@ -123,12 +123,14 @@ public class driver {
 		d.u=username;
 		d.psw=password;
 
-		String delimeter=",";
-		String path="/Users/yolo/GoogleDrive/College Senior Spring/CSCI 4448/4448project";
+		String delimeter="\t";
+		String path="C:/Users/tyler/Desktop/name_salary.csv";
+		String col = "salary";
+		String calc = "maxCol";
 		/*
 		directImport(d.name, d.t, path, d.u, d.psw, delimeter);
 		*/
-		directExport(d.name, d.t, path, d.u, d.psw, delimeter);
+		directCalc(d.name, d.t, d.u, d.psw, calc, col);
 	
 	}
 
