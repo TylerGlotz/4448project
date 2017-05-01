@@ -31,18 +31,22 @@ public class driver {
 		pass=psw;
 	}
 	
-	
-	//Calls correct import to path
-	//If data type has no Delimeter or it is trivial enter "0"
-	public static void directImport(String db, String table, String path, String un, String pass, String delimeter) throws IOException{
+	//parses string returns extension
+	public static String parse(String path){
 		
-		//this block puts the file extension into a string
 		String extension = "";
 		int i = path.lastIndexOf('.');
 		if (i > 0) {
 		    extension = path.substring(i+1);
 		}
+		return extension;
+	}
+	
+	//Calls correct import to path
+	//If data type has no Delimeter or it is trivial enter "0"
+	public static void directImport(String db, String table, String path, String un, String pass, String delimeter) throws IOException{
 		
+		String extension= parse(path);
 		//if it is a text file
 		if(extension.equals("txt")){
 			Import.importTXT port=new importTXT();
@@ -61,18 +65,7 @@ public class driver {
 	//Calls correct export to path
 	//If data type has no Delimeter or it is trivial enter "0"
 	public static void directExport(String db, String table, String path, String un, String pass, String delimeter) throws IOException{
-		
-		//this block puts the file extension into a string
-		//System.out.println("in directExport"+ db);
-		
-		String extension = "";
-		int i = path.lastIndexOf('.');
-		if (i > 0) {
-		    extension = path.substring(i+1);
-		}
-		//System.out.println(extension);
-
-		
+		String extension= parse(path);
 		//if it is a txt file call exportTXT
 		if(extension.equals("txt")){
 			Export.exportTXT port=new exportTXT();
@@ -121,16 +114,18 @@ public class driver {
 		d.name=database;
 		d.t=table;
 		d.u=username;
-		d.psw=password;
-
+		d.psw="yes";
+		
+		/* code to test
 		String delimeter="\t";
 		String path="C:/Users/tyler/Desktop/name_salary.csv";
-		String col = "salary";
-		String calc = "maxCol";
-		/*
+		//String col = "salary";
+		//String calc = "maxCol";
 		directImport(d.name, d.t, path, d.u, d.psw, delimeter);
-		*/
-		directCalc(d.name, d.t, d.u, d.psw, calc, col);
+		//directExport(d.name, d.t, path, d.u, d.psw, delimeter);
+		//directCalc(d.name, d.t, d.u, d.psw, calc, col);
+		 * */
+	
 	
 	}
 
