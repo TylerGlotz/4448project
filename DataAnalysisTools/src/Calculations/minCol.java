@@ -16,18 +16,18 @@ import Import.importCSV;
 public class minCol implements Calculations {
 
 	@Override
-	public void doCalc(String db, String table,  String un, String pass, String calc, int col){
-		FileWriter filew = new FileWriter(path);
-		Class.forName("com.mysql.jdbc.Driver").newInstance();
+	public void doCalc(String db, String table,  String un, String pass, String calc, String col){
+	//	FileWriter filew = new FileWriter(path);
+		//Class.forName("com.mysql.jdbc.Driver").newInstance();
 		try{
 		//connect to database with db (database name), un (MySQL user name), pass (MySQL password)
-		Connection connect = DriverManager.getConnection(String.format("jdbc:mysql://localhost:3306/%s", db), un, pass);
-		String query = String.format("SELECT MIN(%d) as col_min FROM %s", col, table);
+		Connection connect = DriverManager.getConnection(String.format("jdbc:mysql://localhost:3306/%s?useSSL=false", db), un, pass);
+		String query = String.format("SELECT MIN(%d) FROM %s", col, table);
 		Statement statem = connect.createStatement();
 		ResultSet res = statem.executeQuery(query);
 		
 		if(res.next()){
-			int min = res.getInt("col_min");
+			int min = res.getInt(1);
 			System.out.println(min);
 		}
 
