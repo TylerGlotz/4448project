@@ -118,22 +118,33 @@ public class driver {
 		 * must change private database values*/
 
 		driver d=new driver(database,table,username,password);
-		//
-		/*d.name=args[0];//db
+		
+		/*
+		 *Uncomment arguemnts below to run program from command line arguments 
+		 *to run from command line:
+		 *go to \bin
+		 *java -classpath . Driver.driver test test test test test/path.csv ,
+		 *
+		 */
+		
+	
+		
+		d.name=args[0];//db
 		d.t=args[1];//table
 		d.u=args[2];//username
 		d.psw=args[3];//password
 		d.d=args[4];//path
 		d.p=args[5];//delimeter
-		*/
-		System.out.println("sure");
+		
+		//Test Arguments
+		/*
 		d.name="test";//db
 		d.t="test";//table
 		d.u="test";//username
 		d.psw="test";//password
 		d.p="test/test.csv";//path
 		d.d="test";//delimeter
-		System.out.println("sure");
+		*/
 		
 		directExport(d.name, d.t, d.p, d.u, d.psw, d.d);
 		
