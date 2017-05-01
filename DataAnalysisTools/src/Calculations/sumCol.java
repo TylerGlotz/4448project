@@ -18,19 +18,25 @@ public class sumCol implements Calculations {
 	@Override
 	public void doCalc(String db, String table, String un, String pass, String calc, String col){
 		try{
+		
 		//connect to database with db (database name), un (MySQL user name), pass (MySQL password)
 		Connection connect = DriverManager.getConnection(String.format("jdbc:mysql://localhost:3306/%s?useSSL=false", db), un, pass);
+		
+		//SQL query
 		String query = String.format("SELECT SUM(%s) FROM %s", col, table);
 		Statement statem = connect.createStatement();
+		
+		//Result Set of query
 		ResultSet res = statem.executeQuery(query);
 		
+		//Get results and print
 		while(res.next()){
 			int sum = res.getInt(1);
-			System.out.println(sum);
+			System.out.println(String.format("Sum of column %s is %d", col, sum));;
 			
 		}
-		System.out.println(sum);
 		
+		//catch exceptions
 		}catch (SQLException ex) {
             Logger lgr = Logger.getLogger(sumCol.class.getName());
             lgr.log(Level.SEVERE, ex.getMessage(), ex);

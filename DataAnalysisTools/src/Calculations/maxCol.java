@@ -24,17 +24,22 @@ public class maxCol implements Calculations {
 			
 		//connect to database with db (database name), un (MySQL user name), pass (MySQL password)
 		Connection connect = DriverManager.getConnection(String.format("jdbc:mysql://localhost:3306/%s?useSSL=false", db), un, pass);
+	
+		//query to db
 		String query = String.format("SELECT MAX(%s) FROM %s", col, table);
 		Statement statem = connect.createStatement();
-		ResultSet res = statem.executeQuery(query);
-		//result set of the query
-		ResultSetMetaData rsmd = res.getMetaData();
 		
+		//result set of the query
+		ResultSet res = statem.executeQuery(query);
+		
+		
+		//Get the result and print
 		if(res.next()){
 			int max = res.getInt(1);
-			System.out.println(max);
-		}
-	
+			System.out.println(String.format("Max value of column %s is %d", col, max));	
+			}
+		
+		//exception handling
 		}catch (SQLException ex) {
         Logger lgr = Logger.getLogger(maxCol.class.getName());
         lgr.log(Level.SEVERE, ex.getMessage(), ex);

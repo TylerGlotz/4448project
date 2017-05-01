@@ -24,16 +24,19 @@ public class averageCol implements Calculations {
 		//connect to database with db (database name), un (MySQL user name), pass (MySQL password)
 		Connection connect = DriverManager.getConnection(String.format("jdbc:mysql://localhost:3306/%s?useSSL=false", db), un, pass);
 		
+		//SQL QUERY
 		String query = String.format("SELECT AVG(%s) FROM %s", col, table);
 		Statement statem = connect.createStatement();
+		
+		//result set of query
 		ResultSet res = statem.executeQuery(query);
 		
+		
+		//get results and print
 		if(res.next()){
 			int av = res.getInt(1);
-			System.out.println(av);
-			//String avg = res.getString(1);
-			//System.out.println(avg);
-		//	System.out.println("Average column value is " + res.getInt);
+			System.out.println(String.format("Average value of column %s is %d", col, av));
+		
 			}
 		
 		
