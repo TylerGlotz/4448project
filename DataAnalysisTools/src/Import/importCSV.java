@@ -9,6 +9,7 @@ import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+
 public class importCSV implements ImportFileStream {
 
 		public void importFile(String db, String table, String path, String un, String pass, String delimeter){
@@ -16,6 +17,8 @@ public class importCSV implements ImportFileStream {
 		            Connection con = DriverManager.getConnection(String.format("jdbc:mysql://localhost:3306/%s", db), un, pass);
 		            Statement statement = con.createStatement();
 
+		            //CSVReader csvFile = new CSVReader(new FileReader("yourfile.csv"));
+		            
 		            String query= String.format("LOAD DATA INFILE '%s' INTO TABLE %s " + 
 		            " FIELDS TERMINATED BY '%s' ENCLOSED BY '\"' " +
 		            " LINES TERMINATED BY '\r\n'", path, table, delimeter);

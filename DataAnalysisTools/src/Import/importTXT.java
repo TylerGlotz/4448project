@@ -17,7 +17,7 @@ public class importTXT implements ImportFileStream {
 	public void importFile(String db, String table, String path, String un, String pass, String delimeter){
 			try { 
 			  
-			  	
+				System.out.println("------------------------------");    
 	            Connection con = DriverManager.getConnection(String.format("jdbc:mysql://localhost:3306/%s?useSSL=false", db), un, pass);
 	            Statement statement = con.createStatement();
 

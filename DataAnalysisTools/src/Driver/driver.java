@@ -17,7 +17,7 @@ public class driver {
 		private String name;
 		
 		private static String database="dataToolsDB";
-		private static String table="pet";
+		private static String table="newtable";
 		private static String username="root";
 		private static String password="datatools";
 		
@@ -42,12 +42,13 @@ public class driver {
 		
 		
 		String db1="dataToolsDB";
-		String table1="pet";
+		String table1="newtable";
 		String un1="root";
 		String pass1="datatools";
 		
 		
-		Import.importTXT port=new importTXT();
+		//Import.importTXT port=new importTXT();
+		Import.importCSV port=new importCSV();
 		port.importFile(db1, table1, path, un1, pass1, delimeter);
 		
 		
@@ -76,8 +77,8 @@ public class driver {
 		driver d=new driver(database,table,username,password);
 		startDriver(d,database,table,username,password);
 		
-		String delimeter="\t";
-		String path="/Users/yolo/GoogleDrive/College Senior Spring/CSCI 4448/4448project/tabDelimter.txt";
+		String delimeter=",";
+		String path="/Users/yolo/GoogleDrive/College Senior Spring/CSCI 4448/4448project/exampleCSV.csv";
 		directImport(d.name, d.t, path, d.u, d.psw, delimeter);
 		
 		
