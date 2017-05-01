@@ -1,7 +1,7 @@
 package Import;
 
 import java.io.File;
-import java.io.IOException;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -9,15 +9,15 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import com.mysql.jdbc.Driver;
 
 public class importTXT implements ImportFileStream {
 	
 	
 	@Override	
-	public void importFile(String db, String table, String path, String un, String pass, String delimeter) throws IOException{
+	public void importFile(String db, String table, String path, String un, String pass, String delimeter){
 			try { 
 			  
-				System.out.println("------------------------------");    
 	            Connection con = DriverManager.getConnection(String.format("jdbc:mysql://localhost:3306/%s?useSSL=false", db), un, pass);
 	            Statement statement = con.createStatement();
 
