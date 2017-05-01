@@ -28,22 +28,29 @@ public class importCSV implements ImportFileStream{
 		            
 		            
 		    		
-		            String createTableQuery = String.format("CREATE TABLE '%s'", table);
-		            Integer count = 0;
+		            String createTableQuery = String.format("CREATE TABLE %s (%s VARCHAR(250));", table, header[0]);
 		            
-;		            String addColumnsQuery = "";
-		    		for (String s: header) {           
-		    			addColumnsQuery = String.format("ALTER TABLE '%s' ADD ('%s' VARCHAR(250));", table, header[count]);
+		            int res1 = statement.executeUpdate(createTableQuery);
+		            
+		            String addColumnsQuery = "";
+					Integer count = 0;
+		    		for (String s: header) {   
+		    			//System.out.println(count);
+		    			if(count != 0){
+		    				//System.out.println("here" + count);
+		    				addColumnsQuery = String.format("ALTER TABLE %s ADD %s VARCHAR(250);", table, header[count]);
+		    				int res2 = statement.executeUpdate(addColumnsQuery);
+		    			}
 		    			count = count + 1;
 		    	        System.out.println(s); 
 		    	    }
-		    		ResultSet res1 = statement.executeQuery(createTableQuery);
-		    		//ResultSet res2 = statement.executeQuery(addColumnsQuery);
+		    		
 		            
-		            String loadToDBQuery = String.format("LOAD DATA INFILE '%s' INTO TABLE %s " + " FIELDS TERMINATED BY '%s' ENCLOSED BY '\"' " + " LINES TERMINATED BY '\r\n'", path, table, delimeter);
+		            String loadToDBQuery = String.format("LOAD DATA INFILE '%s' INTO TABLE %s FIELDS TERMINATED BY '%s' ENCLOSED BY '\"' LINES TERMINATED BY '\r\n';", path, table, delimeter);
 		            
 		            csvFile.close();
 		            System.out.println("Closed file");  
+		            System.out.println(loadToDBQuery);  
 		            ResultSet res3 = statement.executeQuery(loadToDBQuery);
 
 		        } catch (SQLException ex) {

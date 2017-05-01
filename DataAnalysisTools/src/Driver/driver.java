@@ -43,7 +43,7 @@ public class driver {
 		
 		
 		String db1="dataToolsDB";
-		String table1="newtable";
+		String table1="ddd";
 		String un1="root";
 		String pass1="datatools";
 		
